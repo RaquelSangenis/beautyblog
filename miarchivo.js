@@ -1,22 +1,24 @@
+alert ("Hi Beauty! Bienvenida a Beauty Blog!")
+
 function horasSueno(){
     let horasSueno = prompt ("Cuantas horas duermes al dia?")
     while (horasSueno == '' || isNaN(horasSueno)) {
-        horasSueno = prompt ("Por favor ingrese un numero, cuantas horas duermes al dia?")
+        horasSueno = prompt ("Por favor ingresa un numero, cuantas horas duermes al dia?")
     }
-
+    
     horasSueno = parseInt(horasSueno)
     switch (true) {
         case (horasSueno >= 24):
-            console.warn("No se puede dormir todo un dia")
+            alert("No se puede dormir todo un dia")
             break
         case (horasSueno > 10):
-            console.warn("Estas durmiendo demasiado, visita a tu medico")
+            alert("Estas durmiendo demasiado, visita a tu medico")
             break
         case (horasSueno < 6):
-            console.warn("Estas durmiendo muy poco, visita a tu medico")
+            alert("Estas durmiendo muy poco, visita a tu medico")
             break
         default:
-            console.log("Estas durmiendo bien")
+            alert("Estas durmiendo bien")
             break
     }
 }
@@ -24,27 +26,24 @@ function horasSueno(){
 horasSueno()
 
 function tipoPiel(){
-    let tipoPiel1 = "normal"
-    let tipoPiel2 = "mixta"
-    let tipoPiel3 = "grasa"
-    let tipoPiel4 = "sensible"
+    let tipoPiel = prompt ("Cual es tu tipo de piel? \n normal \n mixta \n grasa \n sensible").toLowerCase()
 
-    alert ("Hi Beauty! Bienvenida a Beauty Blog!")
-    let tipoPiel = prompt ("Cual es tu tipo de piel?")
-    tipoPiel = tipoPiel.toLowerCase()
-
-    if (tipoPiel == tipoPiel1) {
-        alert("Tienes muchos productos para elegir")
-    }else if(tipoPiel == tipoPiel2) {
-        alert("Hay varios productos para tu tipo de piel")
-    }else if(tipoPiel == tipoPiel3){
-        alert("Deberias elegir productos ligeros y sin aceites")
-    }
-    else if(tipoPiel == tipoPiel4){
-        alert("Deberias elegir prodcutos libres de alcohol y fragancias")
-    }
-    else{
+    switch (tipoPiel){
+        case "normal":
+            alert("Tienes muchos productos para elegir")
+            break
+        case "mixta":
+            alert("Hay varios productos para tu tipo de piel")
+            break
+        case "grasa":
+            alert("Deberias elegir productos ligeros y sin aceites")
+            break
+        case "sensible":
+            alert("Deberias elegir productos libres de alcohol y fragancia")
+            break
+        default:
         alert("Debes identificar tu tipo de piel")
+        break
     }
 }
 
