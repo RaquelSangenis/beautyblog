@@ -24,7 +24,7 @@ alert ("Hi Beauty! Bienvenida a Todo Beauty!")
     }
 }
 
-horasSueno()
+horasSueno()*/
 
 function tipoPiel(){
     let tipoPiel = prompt ("Cual es tu tipo de piel? \n normal \n mixta \n grasa \n sensible").toLowerCase()
@@ -48,7 +48,7 @@ function tipoPiel(){
     }
 }
 
-tipoPiel()*/
+tipoPiel()
 
 
 class Product{
