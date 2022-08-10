@@ -1,29 +1,126 @@
 alert("Hi Beauty! Bienvenida a Todo Beauty!");
+debugger
+class Producto {
+  constructor(id, nombre, precio, img) {
+    this.id = id;
+    this.nombre = nombre;
+    this.precio = precio;
+    this.imagen = img;
+  }
+}
 
-/*function horasSueno(){
-    let horasSueno = prompt ("Cuantas horas duermes al dia?")
-    while (horasSueno == '' || isNaN(horasSueno)) {
-        horasSueno = prompt ("Por favor ingresa un numero, cuantas horas duermes al dia?")
-    }
-    
-    horasSueno = parseInt(horasSueno)
-    switch (true) {
-        case (horasSueno >= 24):
-            alert("No se puede dormir todo un dia")
-            break
-        case (horasSueno > 10):
-            alert("Estas durmiendo demasiado, visita a tu medico")
-            break
-        case (horasSueno < 6):
-            alert("Estas durmiendo muy poco, visita a tu medico")
-            break
-        default:
-            alert("Estas durmiendo bien")
-            break
+
+const productos = [];
+
+function mostrarProductos() {
+  productos.push(new Producto(1,"Agua micelar", 1200, "img1"));
+  productos.push(new Producto(2, "Limpiador", 1400, "img2"));
+  productos.push(new Producto(3,"Exfoliante", 1400, "img3"));
+  productos.push(new Producto(4, "Contorno ojos", 1400, "img4"));
+  productos.push(new Producto(5, "Tonico", 1000, "img5"));
+  productos.push(new Producto(6, "Escencia", 1200, "img6"));
+  productos.push(new Producto(7, "Serum", 1800, "img7"));
+  productos.push(new Producto(8, "Hidratante", 1400, "img8"));
+  productos.push(new Producto(9, "Protector solar", 1200, "img9"));
+  productos.push(new Producto(10, "Balsamo labial", 1400, "img10"));
+}
+
+mostrarProductos();
+
+
+let respuesta = confirm("Desea ver algun producto en especifico?");
+if (respuesta == 1) {
+  let nombreProducto = elegirProducto();
+  let productosFiltrados = filtrarProductos(nombreProducto);
+  console.log("Estos son los productos que quizas estes buscando")
+  console.log(productosFiltrados)
+}else{
+  console.log("Ok, aqui tienes para elegir entre todos los productos que tenemos disponibles.")
+  console.log(productos)
+}
+
+
+function elegirProducto() {
+  let nombreProducto = prompt(
+    "Genial, estas en el lugar indicado. Por favor ingresa el nombre del producto.");
+  while (nombreProducto.trim() == "") {
+    nombreProducto = prompt("Por favor ingresa un nombre de producto valido.");
+  }
+  return nombreProducto.toLowerCase();
+}
+
+elegirProducto();
+
+function filtrarProductos(nombre) {
+  let filtrados = productos.filter(function(prod){
+    return prod.nombre.toLowerCase() == nombre
+  });
+
+  return filtrados;
+}
+
+
+let carrito = []; 
+
+function agregarCarrito(id){
+  let productoElegido = productos.find(function(prod){
+    return prod.id === id
+  });
+
+  carrito.push(productoElegido);
+  console.log("Tu carrito ahora tiene estos productos");
+  console.log(carrito);
+
+}
+
+agregarCarrito(4);
+agregarCarrito(7);
+
+
+function sacarCarrito(id){
+    const resultado = carrito.some(producto => producto.id === id)
+    if (resultado){
+      
     }
 }
 
-horasSueno()*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function tipoPiel() {
   let tipoPiel = prompt(
@@ -50,30 +147,3 @@ function tipoPiel() {
 }
 
 //tipoPiel();
-
-class Producto {
-  constructor(nombre, precio, img) {
-    this.name = nombre;
-    this.price = precio;
-    this.image = img;
-  }
-}
-
-const productos = [];
-function agregarProductos() {
-  productos.push(new Producto("Agua micelar", 1200, "img1"));
-  productos.push(new Producto("Limpiador", 1400, "img2"));
-  productos.push(new Producto("Exfoliante", 1400, "img3"));
-  productos.push(new Producto("Contorno ojos", 1400, "img4"));
-  productos.push(new Producto("Tonico", 1000, "img5"));
-  productos.push(new Producto("Escencia", 1200, "img6"));
-  productos.push(new Producto("Serum", 1800, "img7"));
-  productos.push(new Producto("Hidratante", 1400, "img8"));
-  productos.push(new Producto("Protector solar", 1200, "img9"));
-  productos.push(new Producto("Balsamo labial", 1400, "img10"));
-
-  console.log("Productos disponibles");
-  console.log(productos);
-}
-
-agregarProductos();
