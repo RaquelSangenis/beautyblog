@@ -16,6 +16,10 @@ h2 {
   padding: 50px;
 }
 
+#warning{
+  color: #85586f;
+}
+
 .card {
   margin-top: 20px;
 }

@@ -26,7 +26,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="style.css" />
-    <script src="./miarchivo.js"></script>
+    <script defer src="./miarchivo.js"></script>
 
     <title>Todo Beauty</title>
   </head>
@@ -79,117 +79,24 @@
             </li>
           </ul>
 
-          <form class="d-flex" role="Buscar">
-            <input
+          <div class="d-flex" role="Buscar">
+            <input id="buscador"
               class="form-control me-2"
-              type="Buscar"
+              type="text"
               placeholder="Buscar"
               aria-label="Buscar"
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button onclick="filtrarProductos()" class="btn btn-outline-success">
               Buscar
             </button>
-          </form>
+            <p id="warning"></p>
+          </div>
         </div>
       </div>
     </nav>
 
-    <div class="productos">
-      <div class="card" style="width: 18rem">
-        <img
-          src="images/amicelar.jpg"
-          class="card-img-top"
-          alt="Agua Micelar"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Agua Micelar</h5>
-          <p class="card-text">$1000</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
-        </div>
-      </div>
+    <div id="productos" class="productos">
 
-      <div class="card" style="width: 18rem">
-        <img src="images/limpieza.jpg" class="card-img-top" alt="Limpiador" />
-        <div class="card-body">
-          <h5 class="card-title">Limpiador</h5>
-          <p class="card-text">$1400</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem">
-        <img
-          src="images/exfoliante.jpg"
-          class="card-img-top"
-          alt="Exfoliante"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Exfoliante</h5>
-          <p class="card-text">$1400</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem">
-        <img
-          src="images/contorno.jpg"
-          class="card-img-top"
-          alt="Contorno de ojos"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Contorno de ojos</h5>
-          <p class="card-text">$1400</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem">
-        <img src="images/niacinamida.jpg" class="card-img-top" alt="Serum" />
-        <div class="card-body">
-          <h5 class="card-title">Serum Niacinamida</h5>
-          <p class="card-text">$1800</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem">
-        <img
-          src="images/hidratante.jpg"
-          class="card-img-top"
-          alt="Hidratante"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Crema hidratante</h5>
-          <p class="card-text">$1400</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem">
-        <img
-          src="images/labial.jpg"
-          class="card-img-top"
-          alt="Balsamo labial"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Balsamo Labial</h5>
-          <p class="card-text">$1400</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem">
-        <img
-          src="images/pantalla solar.jpg"
-          class="card-img-top"
-          alt="Protector solar"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Protector Solar</h5>
-          <p class="card-text">$1200</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
-        </div>
-      </div>
     </div>
   </body>
   <footer>
