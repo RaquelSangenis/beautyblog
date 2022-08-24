@@ -24,22 +24,8 @@ h2 {
   margin-top: 20px;
 }
 
-footer ul {
-  list-style-type: none;
-  padding-left: 0px;
-}
-footer ul li a {
-  width: 20%;
-  width: 20px;
-  display: inline-block;
-  padding: 5px;
-  margin: 40px;
-}
-footer ul li img {
-  transition: box-shadow 0.3s;
-}
-footer ul li img:hover {
-  box-shadow: 0 0 11px rgba(33, 33, 33, 0.8);
+#carrito{
+  display: none;
 }
 
 footer a {
@@ -49,28 +35,6 @@ footer a {
 footer p {
   text-align: center;
   padding-bottom: 20px;
-  font-family: "Nanum Myeongjo", serif;
   font-weight: bold;
   color: #85586f;
-}
-
-footer input {
-  line-height: 40px;
-  font-size: 14px;
-  padding: 0 20px;
-}
-
-footer button {
-  line-height: 40px;
-  font-size: 14px;
-  padding: 0 20px;
-  font-weight: bold;
-  background-color: #85586f;
-  color: white;
-  font-family: "Nanum Myeongjo", serif;
-}
-
-footer button:hover {
-  box-shadow: 5px 5px #d3d2d2;
-  cursor: pointer;
 }

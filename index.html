@@ -26,13 +26,15 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="style.css" />
+    
     <script defer src="./miarchivo.js"></script>
-
+    
     <title>Todo Beauty</title>
   </head>
   <body>
     <h1>Hola BEAUTY!</h1>
     <h2>Bienvenida</h2>
+    
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -94,38 +96,34 @@
         </div>
       </div>
     </nav>
+    <div class="row">
+      <button type="button" onclick="mostrarCarrito()" class="btn btn-light float-end">Ver Carrito</button>
+    </div>
+
+    <div class="container" id="carrito">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio Unitario</th>
+            <th scope="col">Precio Total</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="carritoFilas">
+        </tbody>
+      </table>
+    </div>
 
     <div id="productos" class="productos">
-
     </div>
+    
+   
+
   </body>
   <footer>
-    <div class="newsLetterForm">
-      <form>
-        <label class="newsL">NEWSLETTER</label>
-        <input type="email" name="" id="" />
-        <button>Suscribirme</button>
-      </form>
-    </div>
-    <div class="footerSocialLinks">
-      <ul>
-        <li>
-          <a href="https://www.instagram.com/cosmetologia_rs/" target="_blank">
-            <img src="images/ig.png" height="20" alt="Instagram" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.facebook.com/Nutricionista-Raquel-Sangen%C3%ADs-1704429526462355"
-            target="_blank"
-          >
-            <img src="images/fb.png" height="20" alt="Facebook" />
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div>
       <p>©Copyright 2022 Raquel Sangenis</p>
-    </div>
   </footer>
 </html>

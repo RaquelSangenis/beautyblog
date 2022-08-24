@@ -8,6 +8,7 @@ class Producto {
 }
 
 let productos = [];
+let carrito = [];
 
 function cargarProductos() {
   productos.push(new Producto(1, "Agua micelar", 1200, "images/amicelar.jpg"));
@@ -40,7 +41,7 @@ function renderizarProductos() {
           <div class="card-body">
             <h5 class="card-title">${prod.nombre}</h5>
             <p class="card-text">$${prod.precio}</p>
-            <a href="#" id="producto${prod.id}" class="btn btn-primary">Comprar</a>
+            <a href="#!" id="producto-${prod.id}" onclick="agregarAlCarrito(this)" class="btn btn-primary comprarBtn">Comprar</a>
           </div>
         </div>
          `
@@ -48,6 +49,15 @@ function renderizarProductos() {
   });
 }
 renderizarProductos();
+
+function cargarCarrito(){
+  let items = localStorage.getItem("carrito")
+  if (items){
+    carrito = JSON.parse(items)
+  }
+}
+cargarCarrito()
+dibujarCarrito()
 
 document.addEventListener("keyup", function (e) {
   let palabra = e.target.value;
@@ -60,16 +70,11 @@ document.addEventListener("keyup", function (e) {
   }
 });
 
-function buscarProductoXID(id) {
-  return productos.find((prod) => prod.id === id);
-}
-
 function vaciarListadoProductos() {
   document.getElementById("productos").innerHTML = "";
 }
 
 function filtrarProductos() {
-  console.log("filtrarProductos");
   let nombre = document.getElementById("buscador").value.toLowerCase();
   if (nombre.trim() === "") {
     document.getElementById("warning").innerHTML =
@@ -78,7 +83,7 @@ function filtrarProductos() {
   }
 
   let filtrados = productos.filter(function (prod) {
-    return prod.nombre.toLowerCase() == nombre;
+    return prod.nombre.toLowerCase().includes(nombre);
   });
 
   if (filtrados.length > 0) {
@@ -88,9 +93,11 @@ function filtrarProductos() {
   }
 }
 
-let carrito = [];
 
-function agregarAlCarrito(idProd) {
+
+function agregarAlCarrito(btn) {
+  let idProd = parseInt(btn.getAttribute("id").split("-")[1])
+
   let productoElegido = productos.find(function (prod) {
     return prod.id === idProd;
   });
@@ -102,11 +109,10 @@ function agregarAlCarrito(idProd) {
     productoElegido.cantidad = 1;
     carrito.push(productoElegido);
   }
-}
 
-agregarAlCarrito(4);
-agregarAlCarrito(7);
-agregarAlCarrito(4);
+  dibujarCarrito()
+  guardarLocalStorage()
+}
 
 function eliminarDelCarrito(idProd) {
   let prod = carrito.find((producto) => producto.id === idProd);
@@ -120,4 +126,48 @@ function eliminarDelCarrito(idProd) {
       }
     }
   }
+  dibujarCarrito()
+  guardarLocalStorage()
+}
+
+function calcularCarrito() {
+  return carrito.reduce((acumulador, producto) => acumulador + (producto.precio * producto.cantidad), 0)
+}
+
+function dibujarCarrito() {
+  const carritoContainer = document.getElementById("carritoFilas")
+  carritoContainer.innerHTML = ""
+
+  carrito.forEach(producto => {
+    carritoContainer.innerHTML += `
+                          <tr>
+                              <td>${producto.id}</td>
+                              <td>${producto.nombre}</td>
+                              <td>${producto.cantidad}</td>
+                              <td>${producto.precio}</td>
+                              <td>${producto.precio * producto.cantidad}</td>
+                              <td><button type="button" onclick="eliminarDelCarrito(${producto.id})" class="btn btn-danger">Eliminar</button>
+                              </td>
+                          </tr>`
+  })
+
+  if (carrito.length){
+    carritoContainer.innerHTML += `
+                          <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>${calcularCarrito()}</td>
+                              <td></td>
+                          </tr>`
+  }
+}
+
+function mostrarCarrito() {
+  document.getElementById('carrito').style.display = 'block'
+}
+
+function guardarLocalStorage(){
+  localStorage.setItem("carrito", JSON.stringify(carrito))
 }
