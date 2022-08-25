@@ -20,6 +20,23 @@ h2 {
   color: #85586f;
 }
 
+.btn-primary {
+  background-color: #85586f;
+  border-color: #85586f;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #85586f ;
+  --bs-btn-hover-border-color: #85586f;
+  --bs-btn-bg: #85586f;
+  --bs-btn-border-color: #85586f;
+  --bs-btn-disabled-bg: #85586f;
+  --bs-btn-disabled-border-color: #85586f;
+}
+.btn-outline-success {
+  --bs-btn-color: #85586f;
+  --bs-btn-border-color: #85586f;
+  --bs-btn-hover-bg: #85586f;
+  --bs-btn-hover-border-color: #85586f;
+}
 .card {
   margin-top: 20px;
 }
@@ -31,7 +48,6 @@ h2 {
 footer a {
   margin: 0;
 }
-
 footer p {
   text-align: center;
   padding-bottom: 20px;

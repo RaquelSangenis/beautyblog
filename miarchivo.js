@@ -40,7 +40,7 @@ function renderizarProductos() {
           />
           <div class="card-body">
             <h5 class="card-title">${prod.nombre}</h5>
-            <p class="card-text">$${prod.precio}</p>
+            <p class="card-text">$ ${prod.precio}</p>
             <a href="#!" id="producto-${prod.id}" onclick="agregarAlCarrito(this)" class="btn btn-primary comprarBtn">Comprar</a>
           </div>
         </div>
@@ -93,8 +93,6 @@ function filtrarProductos() {
   }
 }
 
-
-
 function agregarAlCarrito(btn) {
   let idProd = parseInt(btn.getAttribute("id").split("-")[1])
 
@@ -138,14 +136,19 @@ function dibujarCarrito() {
   const carritoContainer = document.getElementById("carritoFilas")
   carritoContainer.innerHTML = ""
 
+  if (carrito.length) {
+    document.getElementById('vaciarCarritoBtn').style.display = 'block'
+  }else {
+    document.getElementById('vaciarCarritoBtn').style.display = 'none'
+  }
   carrito.forEach(producto => {
     carritoContainer.innerHTML += `
                           <tr>
                               <td>${producto.id}</td>
                               <td>${producto.nombre}</td>
                               <td>${producto.cantidad}</td>
-                              <td>${producto.precio}</td>
-                              <td>${producto.precio * producto.cantidad}</td>
+                              <td>$ ${producto.precio}</td>
+                              <td>$ ${producto.precio * producto.cantidad}</td>
                               <td><button type="button" onclick="eliminarDelCarrito(${producto.id})" class="btn btn-danger">Eliminar</button>
                               </td>
                           </tr>`
@@ -158,7 +161,7 @@ function dibujarCarrito() {
                               <td></td>
                               <td></td>
                               <td></td>
-                              <td>${calcularCarrito()}</td>
+                              <td>$ ${calcularCarrito()}</td>
                               <td></td>
                           </tr>`
   }
@@ -170,4 +173,10 @@ function mostrarCarrito() {
 
 function guardarLocalStorage(){
   localStorage.setItem("carrito", JSON.stringify(carrito))
+}
+
+function vaciarCarrito(){
+  carrito = []
+  dibujarCarrito()
+  localStorage.removeItem("carrito");
 }
