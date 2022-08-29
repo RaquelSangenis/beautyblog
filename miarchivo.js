@@ -15,14 +15,16 @@ function cargarProductos() {
   productos.push(new Producto(2, "Limpiador", 1400, "images/limpieza.jpg"));
   productos.push(new Producto(3, "Exfoliante", 1400, "images/exfoliante.jpg"));
   productos.push(new Producto(4, "Contorno ojos", 1400, "images/contorno.jpg"));
-  productos.push(new Producto(5, "Tonico", 1000, "images/niacinamida.jpg"));
-  productos.push(new Producto(6, "Escencia", 1200, "images/niacinamida.jpg"));
-  productos.push(new Producto(7, "Serum", 1800, "images/hidratante.jpg"));
+  productos.push(new Producto(5, "Tonico", 1000, "images/tonico1.jpg"));
+  productos.push(new Producto(6, "Escencia", 1400, "images/hialu.jpg"));
+  productos.push(new Producto(7, "Serum", 1800, "images/niacinamida.jpg"));
   productos.push(new Producto(8, "Hidratante", 1400, "images/hidratante.jpg"));
   productos.push(
     new Producto(9, "Protector solar", 1200, "images/pantalla solar.jpg")
   );
   productos.push(new Producto(10, "Balsamo labial", 1400, "images/labial.jpg"));
+  productos.push(new Producto(11, "Crema Calmante", 1800, "images/calmacream.jpg"));
+  productos.push(new Producto(12, "Celulas madre", 1800, "images/celmadre.jpg"));
 }
 
 cargarProductos();
@@ -110,6 +112,7 @@ function agregarAlCarrito(btn) {
 
   dibujarCarrito()
   guardarLocalStorage()
+  mensajeCompra()
 }
 
 function eliminarDelCarrito(idProd) {
@@ -149,7 +152,7 @@ function dibujarCarrito() {
                               <td>${producto.cantidad}</td>
                               <td>$ ${producto.precio}</td>
                               <td>$ ${producto.precio * producto.cantidad}</td>
-                              <td><button type="button" onclick="eliminarDelCarrito(${producto.id})" class="btn btn-danger">Eliminar</button>
+                              <td><button type="button" onclick="advertenciaEliminar(${producto.id})" class="btn btn-danger">Eliminar</button>
                               </td>
                           </tr>`
   })
@@ -180,3 +183,35 @@ function vaciarCarrito(){
   dibujarCarrito()
   localStorage.removeItem("carrito");
 }
+
+const mensajeCompra = ()=> {
+  Swal.fire({
+    position: 'top-center',
+    icon: 'success',
+    title: 'Se ha agregado este producto a tu carrito',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  }
+
+  const advertenciaEliminar = (idProducto)=> {
+    Swal.fire({
+      title: 'Estas segura que quieres eliminar este producto de tu carrito?',
+      text: "Todavia puedes comprarlo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, quiero eliminarlo!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        eliminarDelCarrito(idProducto)
+        Swal.fire(
+          'Eliminado!',
+          'Tu producto ha sido eliminado del carrito.',
+          'success'
+        )
+      }
+    })
+  }
