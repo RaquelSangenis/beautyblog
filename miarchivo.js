@@ -10,24 +10,27 @@ class Producto {
 let productos = [];
 let carrito = [];
 
-function cargarProductos() {
-  productos.push(new Producto(1, "Agua micelar", 1200, "images/amicelar.jpg"));
-  productos.push(new Producto(2, "Limpiador", 1400, "images/limpieza.jpg"));
-  productos.push(new Producto(3, "Exfoliante", 1400, "images/exfoliante.jpg"));
-  productos.push(new Producto(4, "Contorno ojos", 1400, "images/contorno.jpg"));
-  productos.push(new Producto(5, "Tonico", 1000, "images/tonico1.jpg"));
-  productos.push(new Producto(6, "Escencia", 1400, "images/hialu.jpg"));
-  productos.push(new Producto(7, "Serum", 1800, "images/niacinamida.jpg"));
-  productos.push(new Producto(8, "Hidratante", 1400, "images/hidratante.jpg"));
-  productos.push(
-    new Producto(9, "Protector solar", 1200, "images/pantalla solar.jpg")
-  );
-  productos.push(new Producto(10, "Balsamo labial", 1400, "images/labial.jpg"));
-  productos.push(new Producto(11, "Crema Calmante", 1800, "images/calmacream.jpg"));
-  productos.push(new Producto(12, "Celulas madre", 1800, "images/celmadre.jpg"));
-}
-
-cargarProductos();
+fetch('http://localhost:3000/productos')
+.then(response=>{
+  if (response.ok) {
+    return response.json();
+  }
+  throw new Error('');
+})
+.then(data=>{ 
+  productos = data
+})
+.then(()=>renderizarProductos())
+.catch( (error) => {
+  Swal.fire({
+    position: 'top-center',
+    icon: 'error',
+    title: 'No se pudieron cargar los productos, intente refrescar la pagina',
+    showConfirmButton: false,
+    timer: 3000
+  })
+})
+.finally(()=> document.getElementsByClassName('spinner-border')[0].style.display = 'none')
 
 function renderizarProductos() {
   productos.forEach(function (prod) {
@@ -50,7 +53,6 @@ function renderizarProductos() {
     );
   });
 }
-renderizarProductos();
 
 function cargarCarrito(){
   let items = localStorage.getItem("carrito")

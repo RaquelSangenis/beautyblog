@@ -1,0 +1,16 @@
+{
+    "productos": [
+      { "id": 1, "nombre": "Agua micelar", "precio": 1200, "imagen": "images/amicelar.jpg" },
+      { "id": 2, "nombre": "Limpiador", "precio": 1400, "imagen": "images/limpieza.jpg" },
+      { "id": 3, "nombre": "Exfoliante", "precio": 1400, "imagen": "images/exfoliante.jpg" },
+      { "id": 4, "nombre": "Contorno ojos", "precio": 1400, "imagen": "images/contorno.jpg" },
+      { "id": 5, "nombre": "Tonico", "precio": 1000, "imagen": "images/tonico1.jpg" },
+      { "id": 6, "nombre": "Escencia", "precio": 1400, "imagen": "images/hialu.jpg" },
+      { "id": 7, "nombre": "Serum", "precio": 1800, "imagen": "images/niacinamida.jpg" },
+      { "id": 8, "nombre": "Hidratante", "precio": 1400, "imagen": "images/hidratante.jpg" },
+      { "id": 9, "nombre": "Protector solar", "precio": 1200, "imagen": "images/pantalla solar.jpg" },
+      { "id": 10, "nombre": "Balsamo labial", "precio": 1400, "imagen": "images/labial.jpg" },
+      { "id": 11, "nombre": "Crema Calmante", "precio": 1800, "imagen": "images/calmacream.jpg" },
+      { "id": 12, "nombre": "Celulas madre", "precio": 1800, "imagen": "images/celmadre.jpg" }
+    ]
+  }

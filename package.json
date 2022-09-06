@@ -1,0 +1,22 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "miarchivo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaquelSangenis/beautyblog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaquelSangenis/beautyblog/issues"
+  },
+  "homepage": "https://github.com/RaquelSangenis/beautyblog#readme",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
+}
