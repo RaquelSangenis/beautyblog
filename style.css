@@ -14,6 +14,7 @@ h2 {
   justify-content: space-around;
   flex-wrap: wrap;
   padding: 50px;
+  min-height: 100vh;
 }
 
 #warning{
@@ -43,6 +44,11 @@ h2 {
 
 #carrito{
   display: none;
+}
+
+#verCarritoBtn, #vaciarCarritoBtn {
+  width: 200px;
+  float: right;
 }
 
 footer a {

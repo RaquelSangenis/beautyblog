@@ -1,15 +1,8 @@
-class Producto {
-  constructor(id, nombre, precio, imagen) {
-    this.id = id;
-    this.nombre = nombre;
-    this.precio = precio;
-    this.imagen = imagen;
-  }
-}
-
 let productos = [];
 let carrito = [];
 
+/*ejecuto llamada a API de productos para cargar el array de productos,
+cuando obtengo la respuesta se renderizan en pantalla*/
 fetch('http://localhost:3000/productos')
 .then(response=>{
   if (response.ok) {
@@ -32,6 +25,7 @@ fetch('http://localhost:3000/productos')
 })
 .finally(()=> document.getElementsByClassName('spinner-border')[0].style.display = 'none')
 
+/*dibujo en pantalla los productos obtenidos de la respuesta del fetch*/
 function renderizarProductos() {
   productos.forEach(function (prod) {
     document.querySelector("#productos").insertAdjacentHTML(
@@ -54,6 +48,7 @@ function renderizarProductos() {
   });
 }
 
+/*funcion para mantener los productos en el carrito aunque se refresque la pagina*/
 function cargarCarrito(){
   let items = localStorage.getItem("carrito")
   if (items){
@@ -63,6 +58,7 @@ function cargarCarrito(){
 cargarCarrito()
 dibujarCarrito()
 
+/*evento para filtrar productos cuando se escribe en el buscador*/
 document.addEventListener("keyup", function (e) {
   let palabra = e.target.value;
   if (palabra.trim() == "") {
@@ -133,6 +129,7 @@ function eliminarDelCarrito(idProd) {
   guardarLocalStorage()
 }
 
+/*funcion para calcular el costo total de la compra del carrito*/
 function calcularCarrito() {
   return carrito.reduce((acumulador, producto) => acumulador + (producto.precio * producto.cantidad), 0)
 }
@@ -167,7 +164,8 @@ function dibujarCarrito() {
                               <td></td>
                               <td></td>
                               <td>$ ${calcularCarrito()}</td>
-                              <td></td>
+                              <td><button type="button" onclick="comprarCarrito()" class="btn btn-success">Comprar</button>
+                              </td>
                           </tr>`
   }
 }
@@ -186,6 +184,17 @@ function vaciarCarrito(){
   localStorage.removeItem("carrito");
 }
 
+function comprarCarrito(){
+  Swal.fire({
+    position: 'top-center',
+    icon: 'success',
+    title: 'La compra se ha realizado exitosamente!',
+    showConfirmButton: false,
+    timer: 3500
+  })
+  vaciarCarrito()
+}
+
 const mensajeCompra = ()=> {
   Swal.fire({
     position: 'top-center',
@@ -198,7 +207,7 @@ const mensajeCompra = ()=> {
 
   const advertenciaEliminar = (idProducto)=> {
     Swal.fire({
-      title: 'Estas segura que quieres eliminar este producto de tu carrito?',
+      title: 'Estas segur@ que quieres eliminar este producto de tu carrito?',
       text: "Todavia puedes comprarlo!",
       icon: 'warning',
       showCancelButton: true,
